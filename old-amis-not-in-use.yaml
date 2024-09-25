@@ -1,0 +1,16 @@
+policies:
+
+  - name: old-amis-not-in-use
+    resource: aws.ami
+    comment: |
+      Old AMIs not in use
+    
+    filters:
+      - type: unused
+        value: true
+      - type: image-age
+        op: greater-than
+        days: 60
+
+    # actions:
+    #   - deregister

@@ -1,0 +1,14 @@
+policies:
+
+  - name: rds-tag-compliance
+    resource: aws.rds
+    comment: |
+      RDS Instances without tag office-hours=true
+    
+    filters:
+      - or:
+          - "tag:office-hours": absent
+          - type: value
+            key: "tag:office-hours"
+            op: eq
+            value: "false"

@@ -1,0 +1,14 @@
+policies:
+
+  - name: eks-tag-compliance
+    resource: aws.eks
+    comment: |
+      EKS clusters without tag office-hours=true
+    
+    filters:
+      - or:
+          - "tag:office-hours": absent
+          - type: value
+            key: "tag:office-hours"
+            op: eq
+            value: "false"

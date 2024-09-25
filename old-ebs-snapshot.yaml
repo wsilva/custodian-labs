@@ -1,0 +1,13 @@
+policies:
+
+  - name: ebs-snapshot-compliance
+    resource: aws.ebs-snapshot
+    comment: |
+      Old EBS snapshots
+    
+    filters:
+      - type: value
+        key: StartTime
+        op: greater-than
+        value: 30
+        value_type: age

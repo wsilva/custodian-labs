@@ -1,0 +1,14 @@
+policies:
+
+  - name: ec2-tag-compliance
+    resource: aws.ec2
+    comment: |
+      EC2 Instances without tag office-hours=true
+    
+    filters:
+      - or:
+          - "tag:office-hours": absent
+          - type: value
+            key: "tag:office-hours"
+            op: eq
+            value: "false"

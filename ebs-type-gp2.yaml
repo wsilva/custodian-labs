@@ -1,0 +1,9 @@
+policies:
+
+  - name: ebs-gp2-type-compliance
+    resource: aws.ebs
+    comment: |
+      EBS type gp2
+      
+    filters:
+     - VolumeType: gp2

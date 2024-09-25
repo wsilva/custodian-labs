@@ -1,0 +1,9 @@
+policies:
+
+  - name: old-ebs-not-in-use
+    resource: aws.ebs
+    comment: |
+      Old EBS disks not in use
+      
+    filters:
+      - Attachments: []

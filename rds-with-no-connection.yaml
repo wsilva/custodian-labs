@@ -1,0 +1,21 @@
+policies:
+
+  - name: rds-with-no-connection
+    resource: aws.rds
+    comment: |
+      RDS instances with no connection last 15 days
+    
+    filters:
+      - type: metrics
+        name: DatabaseConnections
+        days: 15
+        op: equal
+        value: 0
+      - type: value
+        value_type: age
+        key: InstanceCreateTime # to avoid get fresh new instances without metrics on last 15 days
+        op: greater-than
+        value: 15
+    
+    # actions:
+    #   - stop

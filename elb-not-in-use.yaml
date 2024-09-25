@@ -1,0 +1,9 @@
+policies:
+
+  - name: elb-not-in-use
+    resource: aws.elb
+    comment: |
+      Load balancers not in use
+    
+    filters:
+     - Instances: []

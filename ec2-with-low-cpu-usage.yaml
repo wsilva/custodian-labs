@@ -1,0 +1,22 @@
+policies:
+
+  - name: ec2-low-cpu-usage
+    resource: aws.ec2
+    comment: |
+      EC2 Instances with CPU utilization under 20% in last 15 days
+    
+    filters:
+      - type: value
+        value_type: age
+        key: InstanceCreateTime
+        op: greater-than
+        value: 15
+      - type: metrics
+        name: CPUUtilization
+        days: 15
+        period: 86400 # seconds in one day
+        op: less-than
+        value: 20
+    
+    # actions:
+    #   - stop

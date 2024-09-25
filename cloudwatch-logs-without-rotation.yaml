@@ -1,0 +1,13 @@
+policies:
+
+  - name: log-groups-with-no-rotation
+    resource: aws.log-group
+    comment: |
+      Cloudwatch log groups with infinite retation
+      
+    filters:
+      - "retationInDays": empty
+
+    # actions:
+    #   - type: retention
+    #     days: 30

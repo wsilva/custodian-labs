@@ -1,0 +1,12 @@
+policies:
+
+  - name: ebs-gp3-type-compliance
+    resource: aws.ebs
+    comment: |
+      EBS type not gp3
+      
+    filters:
+      - type: value
+        key: VolumeType
+        op: not-equal
+        value: gp3
